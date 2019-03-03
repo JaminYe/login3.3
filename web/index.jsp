@@ -7,7 +7,7 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-
+<script src="js/jquery-3.3.1.min.js"></script>
 <head>
     <meta charset="utf-8"/>
     <title>注册</title>
@@ -109,7 +109,7 @@
             border: 1px solid gold;
         }
     </style>
-    <script type="text/javascript" src="js/My97DatePicker/WdatePicker.js"></script>
+    <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
 </head>
 
 <body>
@@ -120,11 +120,11 @@
     </div>
     <div class="e">
         <div class="f">
-            <form action="" method="get" id="sub">
+            <form action="" method="get" id="registerform">
                 <table>
                     <tr>
                         <td class="f_text"><label for="username">用户名:</label></td>
-                        <td class="f_input"><input type="text" id="username" name="username" onblur="un()"/>
+                        <td class="f_input"><input type="text" id="username" name="username"/>
                             <span id="span_text"></span>
 
                         </td>
@@ -132,26 +132,26 @@
 
                     <tr>
                         <td class="f_text"><label for="password">密码:</label></td>
-                        <td class="f_input"><input type="password" id="password" name="password" onblur="pw()"/>
+                        <td class="f_input"><input type="password" id="password" name="password"/>
                             <span id="span_pw"></span></td>
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="email">Email:</label></td>
-                        <td class="f_input"><input type="email" id="email" name="email" onblur="checkEmail()"/>
+                        <td class="f_input"><input type="email" id="email" name="email"/>
                             <span id="span_email"></span></td>
 
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="name1">姓名:</label></td>
-                        <td class="f_input"><input type="text" id="name1" name="name" onblur="checkname()"/>
+                        <td class="f_input"><input type="text" id="name1" name="name"/>
                             <span id="span_name"></span></td>
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="tel">手机号:</label></td>
-                        <td class="f_input"><input type="text" id="tel" name="tel" onblur="checktel()"/>
+                        <td class="f_input"><input type="text" id="tel" name="tel"/>
                             <span id="span_tel"></span></td>
                     </tr>
 
@@ -195,104 +195,26 @@
 </div>
 </body>
 <script>
-    document.getElementById("sub").onsubmit = function () {
-        //				return un() && pw() &&checkEmail()&&checkname()&&checktel() &&checkbirthday()&&checkedcode()
-        return checkbirthday()
-    }
-
-    function checkedcode() {
-        var code = document.getElementById("checkcode");
-
-        if (code.value == "1024") {
-            document.getElementById("span_code").innerHTML = "验证成功";
-            return true;
-        } else {
-            document.getElementById("span_code").innerHTML = "验证失败"
-            return false;
-        }
-    }
-
-    function checktel() {
-
-        var tel = document.getElementById("tel");
-        var reg = /0?(13|14|15|17|18|19)[0-9]{9}/;
-        if (reg.test(tel.value)) {
-            document.getElementById("span_tel").innerHTML = "验证成功";
-            return true;
-        } else {
-            document.getElementById("span_tel").innerHTML = "验证失败"
-            return false;
-        }
-    }
-
-    var birthday = document.getElementById("birthday");
-
-    function checkbirthday() {
-
-
-        if (birthday.value == "") {
-            document.getElementById("span_birthday").innerHTML = "验证失败"
-            return false;
-        } else {
-
-            document.getElementById("span_birthday").innerHTML = "验证成功";
-            return true;
-        }
-    }
-
-    function pw() {
-        var pword = document.getElementById("password")
-        var reg = /^[1-9]\d*$/;
-        if (reg.test(pword.value)) {
-            document.getElementById("span_pw").innerHTML = "验证成功";
-            return true;
-        } else {
-            document.getElementById("span_pw").innerHTML = "验证失败"
-            return false;
-        }
-    }
-
-    function un() {
-        var uname = document.getElementById("username");
-        var reg = /[\u4e00-\u9fa5]/;
-        if (reg.test(uname.value)) {
-            document.getElementById("span_text").innerHTML = "验证成功";
-            return true;
-        } else {
-            document.getElementById("span_text").innerHTML = "验证失败"
-            return false;
-        }
-    }
-
+    //校验用户名
     function checkname() {
-
-        var name1 = document.getElementById("name1");
-
-        var reg = /[\u4e00-\u9fa5]/;
-        if (reg.test(name1.value)) {
-            document.getElementById("span_name").innerHTML = "验证成功";
-            return true;
+        var username = $("#username").val();
+        var reg = /^\w{8,20}$/;
+        var flag = reg.test(username);
+        if (flag) {
+            $("#username").css();
         } else {
-            document.getElementById("span_name").innerHTML = "验证失败"
-            return false;
+            $("#username").css("border", "1px solid red");
         }
-
+        return flag;
     }
 
-    function checkEmail() {
-
-        var email = document.getElementById("email");
-
-        var reg = /\w[-\w.+]*@([A-Za-z0-9][-A-Za-z0-9]+\.)+[A-Za-z]{2,14}/;
-        if (reg.test(email.value)) {
-            document.getElementById("span_email").innerHTML = "验证成功";
-            return true;
-        } else {
-            document.getElementById("span_email").innerHTML = "验证失败"
-            return false;
-        }
-
-    }
+    // 校验表单
+    $(function () {
+        $("#registerform").submit(function () {
+            return checkname();
+        })
+        $("#username").blur(checkname());
+    });
 </script>
 
 </html>
