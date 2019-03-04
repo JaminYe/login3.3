@@ -1,0 +1,99 @@
+
+body {
+    background: url("../img/1.jpg") no-repeat center;
+    background-size: 100%, 100%;
+}
+
+.a {
+    border: 5px solid #CBCBCB;
+    width: 800px;
+    height: 400px;
+    margin: auto;
+    margin-top: 30px;
+    vertical-align: middle;
+    background-color: white;
+}
+
+.r {
+    float: left;
+    /*border: solid;*/
+    margin: 15px;
+}
+
+.r > p:first-child {
+    font-size: 20px;
+    color: gold;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.r > p:last-child {
+    /*border: solid;*/
+    font-size: 20px;
+    color: gray;
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+
+.e {
+    float: left;
+    margin-left: 15px;
+    margin-top: 15px;
+}
+
+.g {
+    float: right;
+    margin: 15px;
+}
+
+.g a {
+    color: pink;
+}
+
+.f {
+    width: 400px;
+}
+
+.f_text {
+    height: 35px;
+    text-align: right;
+    width: 70px;
+}
+
+.f_input {
+    padding-left: 15px;
+}
+
+#username,
+#realname,
+#email,
+#birthday,
+#yanzhengma,
+#tel,
+#password {
+    width: 200px;
+    height: 25px;
+    border: 1px solid gray;
+    border-radius: 5px;
+}
+
+
+#td_sub {
+    width: 80px;
+    height: 40px;
+    background-color: gold;
+    border: 1px solid gold;
+    margin-top: 10px;
+}
+
+#yanzhengma {
+    width: 130px;
+}
+
+#code {
+    width: 65px;
+    height: 30px;
+    vertical-align: middle;
+}
