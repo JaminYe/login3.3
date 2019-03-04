@@ -82,7 +82,7 @@
         }
 
         #username,
-        #name1,
+        #realname,
         #email,
         #birthday,
         #checkcode,
@@ -124,35 +124,38 @@
                 <table>
                     <tr>
                         <td class="f_text"><label for="username">用户名:</label></td>
-                        <td class="f_input"><input type="text" id="username" name="username"/>
-                            <span id="span_text"></span>
-
+                        <td class="f_input"><input type="text" id="username" name="username" onblur="checkname()" onchange="checkname1()" /></td>
+                        <td><span id="span_name"></span>
                         </td>
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="password">密码:</label></td>
-                        <td class="f_input"><input type="password" id="password" name="password"/>
-                            <span id="span_pw"></span></td>
+                        <td class="f_input"><input type="password" id="password" name="password" onblur="checkpassword()"/>
+                        </td> <td><span id="span_password"></span>
+                    </td>
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="email">Email:</label></td>
-                        <td class="f_input"><input type="email" id="email" name="email"/>
-                            <span id="span_email"></span></td>
+                        <td class="f_input"><input type="email" id="email" name="email" onblur="checkEmail()"/>
+                        </td> <td><span id="span_email"></span>
+                    </td>
 
                     </tr>
 
                     <tr>
-                        <td class="f_text"><label for="name1">姓名:</label></td>
-                        <td class="f_input"><input type="text" id="name1" name="name"/>
-                            <span id="span_name"></span></td>
+                        <td class="f_text"><label for="realname">姓名:</label></td>
+                        <td class="f_input"><input type="text" id="realname" name="realname" onblur="checkRealname()"/>
+                        </td> <td><span id="span_relname"></span>
+                    </td>
                     </tr>
 
                     <tr>
                         <td class="f_text"><label for="tel">手机号:</label></td>
-                        <td class="f_input"><input type="text" id="tel" name="tel"/>
-                            <span id="span_tel"></span></td>
+                        <td class="f_input"><input type="text" id="tel" name="tel" onblur="checkTel()" onclick="checkTel()"/>
+                        </td> <td><span id="span_tel"></span>
+                    </td>
                     </tr>
 
                     <tr>
@@ -164,9 +167,8 @@
                     <tr>
                         <td class="f_text"><label for="birthday">出生日期:</label></td>
                         <td class="f_input"><input type="text" id="birthday" name="birthday"
-                                                   onclick="WdatePicker({dateFmt:'yyyy:MM:dd HH:mm:ss'})"
-                                                   onchange="checkbirthday()"/>
-                            <span id="span_birthday"></span></td>
+                                                   onclick="WdatePicker({dateFmt:'yyyy-MM-dd',maxDate:'2000-01-01'})"onchange="checkBirthday()"/>
+                        </td>
                     </tr>
 
                     <tr>
@@ -175,7 +177,7 @@
                                                    onblur="checkedcode()"/><img src="img/下载.jpg" width="100px"
                                                                                 height="20px" class="img_check">
                     </tr>
-                    <span id="span_code"></span>
+
 
                     </td>
                     <tr>
@@ -191,30 +193,120 @@
         <span>已有账号?</span>
         <a href="#">直接登录</a>
 
+
     </div>
 </div>
 </body>
 <script>
+
+
+    var trueimg="<img src=\"img/true.png\" height=\"30px\" width=\"50px\">";
+    var falseimg=" <img src=\"img/false.png\" height=\"30px\" width=\"50px\">"
+    var falseTel="请输入正确的手机号";
+    var falseEmail="请输入正确的email地址"
     //校验用户名
     function checkname() {
         var username = $("#username").val();
         var reg = /^\w{8,20}$/;
         var flag = reg.test(username);
         if (flag) {
-            $("#username").css();
+            $("#username").css("border", "1px solid grey");
+
         } else {
             $("#username").css("border", "1px solid red");
         }
         return flag;
     }
+        //校验
+
+    function checkname1() {
+        if (checkname()){
+            $("#span_password").append(trueimg);
+        }else{
+            $("#span_name").remove();
+            $("#span_password").append(falseimg);
+            $("#span_password").append("密码不得少于8位,以字母数字组成");
+        }
+    }
+
+
+
+    //校验密码
+    function checkpassword() {
+        var password = $("#password").val()
+        var reg = /^\w{8,20}$/;
+        var flag = reg.test(password);
+        if (flag) {
+            $("#password").css("border", "1px solid grey");
+            $("#span_password").append(trueimg);
+        } else {
+            $("#password").css("border", "1px solid red");
+            $("#span_password").append(falseimg);
+            $("#span_password").append("密码不得少于8位,以字母数字组成");
+        }
+        return flag;
+    }
+
+
+    //校验Email地址
+    function checkEmail() {
+        var email = $("#email").val()
+        var reg =/[\w!#$%&'*+/=?^_`{|}~-]+(?:\.[\w!#$%&'*+/=?^_`{|}~-]+)*@(?:[\w](?:[\w-]*[\w])?\.)+[\w](?:[\w-]*[\w])?/;
+        var flag = reg.test(email);
+        if (flag) {
+            $("#email").css("border", "1px solid grey");
+            $("#span_email").append(trueimg);
+        } else {
+            $("#email").css("border", "1px solid red");
+            $("#span_email").append(falseimg);
+            $("#span_email").append("请输入正确的Email地址")
+        }
+        return flag;
+    }
+
+    //校验姓名
+    function checkRealname() {
+        var realname = $("#realname").val()
+        var reg = /[\u4e00-\u9fa5]/;
+        var flag = reg.test(realname);
+        if (flag) {
+            $("#realname").css("border", "1px solid grey");
+            $("#span_relname").append(trueimg);
+        } else {
+            $("#realname").css("border", "1px solid red");
+            $("#span_relname").append(falseimg);
+
+        }
+        return flag;
+    }
+
+    //校验手机号
+    function checkTel() {
+        var tel = $("#tel").val()
+        var reg =/0?(13|14|15|17|18|19)[0-9]{9}/;
+        var flag = reg.test(tel);
+        if (flag) {
+            $("#tel").css("border", "1px solid grey");
+            $("#span_tel").append(trueimg);
+        } else {
+            $("#tel").css("border", "1px solid red");
+            $("#span_tel").append(falseimg);
+            $("#span_tel").append(falseTel);
+
+        }
+        return flag;
+    }
+
 
     // 校验表单
     $(function () {
         $("#registerform").submit(function () {
-            return checkname();
+            return checkname()&&checkpassword()&&checkEmail()&&checkRealname()&&checkTel();
+
         })
-        $("#username").blur(checkname());
+
     });
+
 </script>
 
 </html>

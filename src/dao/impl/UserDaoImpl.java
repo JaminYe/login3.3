@@ -10,6 +10,6 @@ import util.BaseDao;
  */
 public class UserDaoImpl implements UserDao {
     //创建JdbcTemplate成员变量
-   private JdbcTemplate jdbcTemplate=new JdbcTemplate(BaseDao.getDs());
+   private static JdbcTemplate jdbcTemplate=new JdbcTemplate(BaseDao.getDs());
 
 }
