@@ -8,6 +8,7 @@ User_name Varchar2(20), --用户姓名
 User_phonenumber Varchar2(11), --用户手机号
 User_gender Number, --用户性别
 User_birthday Date --用户出生日期
+USER_ACTIVATION number --用户是否激活
 )
 --创建用户id的序列(开始值为10000,每次增加1)
 CREATE SEQUENCE sequence_userid 
