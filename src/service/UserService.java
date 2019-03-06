@@ -40,5 +40,11 @@ public interface UserService {
      * @return  重发是否成功
      */
     Boolean sendEmailrepeat(String realname,String email);
+    /**
+     * 通过邮箱更改激活状态
+     * @param code  邮箱地址
+     * @return  是否修改成功
+     */
+    Boolean updateCodeByEmail(String code);
 
 }

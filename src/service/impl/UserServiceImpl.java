@@ -66,4 +66,13 @@ public class UserServiceImpl implements service.UserService {
 
     }
 
+    @Override
+    public Boolean updateCodeByEmail(String code) {
+       if (userDao.updateCodeByEmail(code)>0){
+           return true;
+       }else{
+           return false;
+       }
+    }
+
 }

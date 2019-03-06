@@ -13,6 +13,9 @@ import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 
+/**
+ *注册
+ */
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
 

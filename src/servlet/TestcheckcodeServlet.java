@@ -12,25 +12,25 @@ import java.io.PrintWriter;
 
 @WebServlet("/TestcheckcodeServlet")
 public class TestcheckcodeServlet extends HttpServlet {
-  protected void doPost(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    String code = request.getParameter("code");
-    String sessioncode = (String) request.getSession().getAttribute("sessioncode");
-    request.getSession().removeAttribute("sessioncode");
-    Boolean flag;
-    if (code.equalsIgnoreCase(sessioncode)) {
-      flag = true;
-    } else {
-      flag = false;
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        String code = request.getParameter("code");
+        String sessioncode = (String) request.getSession().getAttribute("sessioncode");
+        request.getSession().removeAttribute("sessioncode");
+        Boolean flag;
+        if (code.equalsIgnoreCase(sessioncode)) {
+            flag = true;
+        } else {
+            flag = false;
+        }
+        JSONObject json = new JSONObject();
+        json.put("flag", flag);
+        PrintWriter out = response.getWriter();
+        out.println(json);
     }
-    JSONObject json = new JSONObject();
-    json.put("flag", flag);
-    PrintWriter out = response.getWriter();
-    out.println(json);
-  }
 
-  protected void doGet(HttpServletRequest request, HttpServletResponse response)
-      throws ServletException, IOException {
-    this.doPost(request, response);
-  }
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        this.doPost(request, response);
+    }
 }

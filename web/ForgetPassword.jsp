@@ -10,7 +10,25 @@
 <head>
     <title>Title</title>
 </head>
-<body>
+<style>
+    body {
+        background: url("/img/1.jpg") no-repeat center;
+        background-size: 100%, 100%;
+    }
 
+    .a {
+        border: 5px solid #CBCBCB;
+        width: 800px;
+        height: 400px;
+        margin: auto;
+        margin-top: 30px;
+        vertical-align: middle;
+        background-color: white;
+    }
+</style>
+<body>
+<div class="a">
+    <span>激活成功</span>
+</div>
 </body>
 </html>

@@ -78,7 +78,6 @@
                         />
                         </td>
                     </tr>
-<
                     <tr>
                         <td class="f_text"><label for="yanzhengma">验证码:</label></td>
                         <td class="f_input"><input type="text" id="yanzhengma" name="yanzhengma" onblur="checkcode()"/>
@@ -91,7 +90,7 @@
 
             </form>
         </div>
-    </div>g
+    </div>
     <div class="">
         <span>已有账号?</span>
         <a href="#">直接登录</a>

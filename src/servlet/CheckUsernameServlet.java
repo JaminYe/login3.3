@@ -10,6 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
+/**
+ * 用户名验证是否重复
+ */
 @WebServlet("/CheckUsernameServlet")
 public class CheckUsernameServlet extends HttpServlet {
   protected void doPost(HttpServletRequest request, HttpServletResponse response)

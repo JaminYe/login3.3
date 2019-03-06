@@ -1,5 +1,7 @@
 package servlet;
 
+import service.impl.UserServiceImpl;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -13,9 +15,18 @@ import java.io.IOException;
 @WebServlet("/ActiveAccount")
 public class ActiveAccount extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        UserServiceImpl userService = new UserServiceImpl();
         //获取请求中的code码
         String code = request.getParameter("code");
-        if (null!=code){
+        //先判断code是否为空
+        if (null != code) {
+            Boolean flag = userService.updateCodeByEmail(code);
+            if (flag) {
+            response.sendRedirect("Activation.jsp");
+            } else {
+
+            }
+        }else{
 
         }
     }

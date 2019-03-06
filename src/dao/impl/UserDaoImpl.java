@@ -26,7 +26,18 @@ public class UserDaoImpl implements UserDao {
     public int insertUser(User user) {
         // 新增用户默认为未激活状态
         String sql = "insert into user_ values(sequence_userid.Nextval,?,?,?,?,?,?,?,?,?)";
-        int a = jdbcTemplate.update(sql, user.getUsername(), user.getPassword(), user.getEmail(), user.getRealname(), user.getTel(), user.getGender(), Timestamp.valueOf(user.getBirthday()), 0, user.getCode());
+        int a =
+                jdbcTemplate.update(
+                        sql,
+                        user.getUsername(),
+                        user.getPassword(),
+                        user.getEmail(),
+                        user.getRealname(),
+                        user.getTel(),
+                        user.getGender(),
+                        Timestamp.valueOf(user.getBirthday()),
+                        0,
+                        user.getCode());
         return a;
     }
 
@@ -66,5 +77,18 @@ public class UserDaoImpl implements UserDao {
         String sql = "select Code from user_ where email=?";
         String code = jdbcTemplate.queryForObject(sql, String.class, email);
         return code;
+    }
+
+    /**
+     * 通过邮箱更改激活状态
+     *
+     * @param code 邮箱地址
+     * @return
+     */
+    @Override
+    public int updateCodeByEmail(String code) {
+        String sql = "update user_ set activation=1 where code=?";
+        int i = jdbcTemplate.update(sql, code);
+        return i;
     }
 }

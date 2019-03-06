@@ -34,4 +34,12 @@ public interface UserDao {
      * @return 激活码
      */
     String queryUserbyRegisterEmail (String email);
+
+    /**
+     * 通过邮箱更改激活状态
+     * @param code  邮箱地址
+     * @return  修改行数
+     */
+    int updateCodeByEmail(String code);
+
 }
