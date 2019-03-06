@@ -196,7 +196,7 @@ function checkcode() {
 // 校验表单
 $(function () {
     $("#registerform").submit(function () {
-        return checkname() && checkpassword() && checkEmail() && checkRealname() && checkTel() && $("#birthday").val() != "";
+        return checkname() && checkpassword() && checkEmail() && checkRealname() && checkTel() && $("#birthday").val() != ""&&checkcode();
 
     });
 

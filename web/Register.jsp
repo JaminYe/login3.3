@@ -11,9 +11,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>注册</title>
-    <link rel="stylesheet" href="css/register.css">
+    <link rel="stylesheet" href="css/Register.css">
     <script type="text/javascript" src="My97DatePicker/WdatePicker.js"></script>
-    <script type="text/javascript" src="js/register.js"></script>
+    <script type="text/javascript" src="js/Register.js"></script>
 </head>
 
 <body>
@@ -24,7 +24,7 @@
     </div>
     <div class="e">
         <div class="f">
-            <form action="/RegisterServlet" method="get" id="registerform">
+            <form action="/RegisterServlet" method="post" id="registerform">
                 <table>
                     <tr>
                         <td class="f_text"><label for="username">用户名:</label></td>
@@ -51,8 +51,8 @@
                     </tr>
                     <tr>
                         <td class="f_text"><label for="realname">姓名:</label></td>
-                        <td class="f_input"><input type="text" id="realname" name="realname" onblur="checkRealname1()"
-                                                   onchange="checkrealname()"/>
+                        <td class="f_input"><input type="text" id="realname" name="realname" onblur="checkrealname1()"
+                                                   onchange="checkRealname()"/>
                         </td>
                         <td><span id="span_realname"></span>
                         </td>
@@ -78,7 +78,7 @@
                         />
                         </td>
                     </tr>
-
+<
                     <tr>
                         <td class="f_text"><label for="yanzhengma">验证码:</label></td>
                         <td class="f_input"><input type="text" id="yanzhengma" name="yanzhengma" onblur="checkcode()"/>
@@ -91,10 +91,13 @@
 
             </form>
         </div>
-    </div>
-    <div class="g">
+    </div>g
+    <div class="">
         <span>已有账号?</span>
         <a href="#">直接登录</a>
+        <br>
+        <span>忘记密码?</span>
+        <a href="ForgetPassword.jsp">找回密码</a>
 
 
     </div>

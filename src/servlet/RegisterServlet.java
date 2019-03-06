@@ -3,7 +3,6 @@ package servlet;
 import org.apache.commons.beanutils.BeanUtils;
 import pojo.User;
 import service.impl.UserServiceImpl;
-import util.SendEmail;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -16,10 +15,11 @@ import java.util.Map;
 
 @WebServlet("/RegisterServlet")
 public class RegisterServlet extends HttpServlet {
+
   protected void doPost(HttpServletRequest request, HttpServletResponse response)
       throws ServletException, IOException {
     // 设置响应编码
-    response.setCharacterEncoding("utf-8");
+    request.setCharacterEncoding("utf-8");
     // userService的对象
     UserServiceImpl userService = new UserServiceImpl();
 
@@ -28,7 +28,7 @@ public class RegisterServlet extends HttpServlet {
     // 获取前端的值封装成map集合
     Map<String, String[]> map = request.getParameterMap();
     // 单独获取邮箱地址与用户名
-    String username = request.getParameter("username");
+    String realname = request.getParameter("realname");
     String email = request.getParameter("email");
     // 获取的map集合封装成javabean
     try {
@@ -39,16 +39,12 @@ public class RegisterServlet extends HttpServlet {
       e.printStackTrace();
     }
     // 调用service方法返回执行结果
-    int i = userService.insertUser(user);
+    Boolean flag = userService.insertUser(user, email);
     // 判断是否新增成功
-    if (i != 0) {
-      try {
-        SendEmail.sendmail(email, username, "aaaa");
-      } catch (Exception e) {
-        e.printStackTrace();
-      }
-    } else {
-
+    if (flag) {
+      request.getSession().setAttribute("realname", realname);
+      request.getSession().setAttribute("email", email);
+      request.getRequestDispatcher("Activation.jsp").forward(request, response);
     }
   }
 

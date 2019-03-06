@@ -1,15 +1,12 @@
 package pojo;
 
-
-import java.sql.Timestamp;
-import java.util.Date;
-
 /**
  * 用户实体类
  *
  * @author Jamin
  */
 public class User {
+
     /**
      * 用户id
      */
@@ -46,28 +43,52 @@ public class User {
      * 用户激活状态
      */
     private int activation;
+    /**
+     * 激活码
+     */
+    private String code;
+
+    public User() {
+    }
 
     @Override
     public String toString() {
-        return "User{" +
-                "user_id=" + userid +
-                ", username='" + username + '\'' +
-                ", password='" + password + '\'' +
-                ", email='" + email + '\'' +
-                ", realname='" + realname + '\'' +
-                ", tel='" + tel + '\'' +
-                ", gender=" + gender +
-                ", birthday=" + birthday +
-                ", activation=" + activation +
-                '}';
+        return "User{"
+                + "userid="
+                + userid
+                + ", username='"
+                + username
+                + '\''
+                + ", password='"
+                + password
+                + '\''
+                + ", email='"
+                + email
+                + '\''
+                + ", realname='"
+                + realname
+                + '\''
+                + ", tel='"
+                + tel
+                + '\''
+                + ", gender="
+                + gender
+                + ", birthday='"
+                + birthday
+                + '\''
+                + ", activation="
+                + activation
+                + ", code="
+                + code
+                + '}';
     }
 
-    public int getUser_id() {
+    public int getUserid() {
         return userid;
     }
 
-    public void setUser_id(int user_id) {
-        this.userid = user_id;
+    public void setUserid(int userid) {
+        this.userid = userid;
     }
 
     public String getUsername() {
@@ -118,7 +139,6 @@ public class User {
         this.gender = gender;
     }
 
-
     public String getBirthday() {
         return birthday;
     }
@@ -135,11 +155,26 @@ public class User {
         this.activation = activation;
     }
 
-    public User() {
+    public String getCode() {
+        return code;
     }
 
-    public User(int user_id, String username, String password, String email, String realname, String tel, int gender, String birthday, int activation) {
-        this.userid = user_id;
+    public void setCode(String code) {
+        this.code = code;
+    }
+
+    public User(
+            int userid,
+            String username,
+            String password,
+            String email,
+            String realname,
+            String tel,
+            int gender,
+            String birthday,
+            int activation,
+            String code) {
+        this.userid = userid;
         this.username = username;
         this.password = password;
         this.email = email;
@@ -148,5 +183,6 @@ public class User {
         this.gender = gender;
         this.birthday = birthday;
         this.activation = activation;
+        this.code = code;
     }
 }

@@ -27,4 +27,11 @@ public interface UserDao {
      * @return  查询得到的条数
      */
     Long queryUserByUsername(String username);
+
+    /**
+     * 通过email查激活码
+     * @param email 注册的email
+     * @return 激活码
+     */
+    String queryUserbyRegisterEmail (String email);
 }

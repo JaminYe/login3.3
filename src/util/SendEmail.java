@@ -73,7 +73,7 @@ public class SendEmail {
         message.setSubject("测试", "UTF-8");
 
         // 5. Content: 邮件正文（可以使用html标签）（内容有广告嫌疑，避免被邮件服务器误认为是滥发广告以至返回失败，请修改发送内容）
-        message.setContent(recorderName+"您好,请点击链接完成XX网注册http://localhost:8080/active?id =" +messageText, "text/html;charset=UTF-8");
+        message.setContent(recorderName+"您好,请点击链接完成XX网注册http://localhost:8080/ActiveAccount?code =" +messageText, "text/html;charset=UTF-8");
 
         // 6. 设置发件时间
         message.setSentDate(new Date());

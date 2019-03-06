@@ -13,6 +13,7 @@ import java.io.IOException;
 @WebServlet("/CheckEmailServlet")
 public class CheckEmailServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String email = request.getParameter("email");
         UserServiceImpl userService = new UserServiceImpl();
         Boolean flag = userService.queryUserByEmail(email);
